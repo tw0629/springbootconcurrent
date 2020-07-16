@@ -1,0 +1,13 @@
+
+
+https://www.jianshu.com/p/c9c506500cd0
+https://github.com/Spring5945/metrics
+
+阿里巴巴&唯品会开发规范都提到了线程池使用规范，在多线程开发中，不建议直接使用Executors工具类构建线程池，并且多线程开发中强制使用线程池方式开启线程。
+除此之外，线程池的管理&监控也十分重要，我们可以对线程池统一管理，使线程池的构建收口到一个工具类中，并且完成注册&释放、监控等。
+
+基于ThreadPoolBuilder&ThreadPoolRegistrar实现，会使用influxdb+grafana进行线程池监控，完成一整套解决方案。
+
+Github地址
+https://github.com/Spring5945/metrics
+

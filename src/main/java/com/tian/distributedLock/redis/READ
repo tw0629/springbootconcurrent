@@ -1,0 +1,12 @@
+
+
+=======================================
+# 基于 Redis 实现分布式锁的三种方案
+1   用 Redis 实现分布式锁的正确姿势（实现一）
+    RedisTool
+
+2   用 Redisson 实现分布式可重入锁（RedissonLock）（实现二）
+    RedissonLockTest
+
+3   用 Redisson 实现分布式锁(红锁 RedissonRedLock)（实现三）
+    RedissonRedLockTest

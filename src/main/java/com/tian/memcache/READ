@@ -1,0 +1,7 @@
+
+
+来源
+https://langyu.iteye.com/blog/680052
+
+memcache存储时, 并发问题(一秒钟很多个请求进来)
+com.tian.memcache.CASTest

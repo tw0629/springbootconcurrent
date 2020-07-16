@@ -1,0 +1,12 @@
+
+来源
+https://blog.csdn.net/puhaiyang/article/details/77581296
+
+
+例子的功能描述：
+计算1+2+3+……1000000000的和，即1000000000！的结果
+
+
+以此做对比
+一个不采用ForkJoinTask的实现方式
+一个 采用ForkJoinTask的实现方式

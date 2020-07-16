@@ -1,0 +1,20 @@
+
+
+https://blog.csdn.net/xiaojin21cen/article/details/87363143#1_16
+
+队列：是一种特殊的线性结构，
+     允许在线性结构的前端进行删除/读取操作；
+     允许在线性结构的后端进行插入操作；
+     这种线性结构具有“先进先出”的操作特点：
+
+但是在实际应用中，队列中的元素有可能不是以“进入的顺序”为排序依据的。
+例如我们将要讲到的 PriorityBlockingQueue 队列。
+
+
+
+SynchronousQueue
+SynchronousQueue的put和take是阻塞的，一个线程put，然后阻塞，等待另一个线程take；或者一个线程take，然后阻塞，等待另一个线程put。
+
+
+
+int   MAX_VALUE = 0x7fffffff    == 21 4748 3647(十进制)

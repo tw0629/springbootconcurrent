@@ -1,0 +1,6 @@
+
+来源
+https://mp.weixin.qq.com/s?__biz=MzI3MDA2OTE0Nw==&mid=2247483880&idx=1&sn=5873fdf2d9632e24efeadfba87f9aedd&chksm=ead7fd1cdda0740a6cf135d0684118bbe04a1eb3a5749aaf8666a59afd14325c6864f96eb8fb&mpshare=1&scene=1&srcid=0514eBUQe6xjHa46Vr453VQj#rd
+
+
+每隔一秒事件源sendData(),消费者就开始消费数据，这里实质上是一种观察者模式，内部状态改变会通知所有的消费者，有兴趣的可以去了解下观察者模式。

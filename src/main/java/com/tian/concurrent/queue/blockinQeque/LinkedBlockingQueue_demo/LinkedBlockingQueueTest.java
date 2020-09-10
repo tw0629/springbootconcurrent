@@ -1,4 +1,4 @@
-package com.tian.concurrent.queue.LinkedBlockingQueue_demo;
+package com.tian.concurrent.queue.blockinQeque.LinkedBlockingQueue_demo;
 
 import org.junit.Test;
 

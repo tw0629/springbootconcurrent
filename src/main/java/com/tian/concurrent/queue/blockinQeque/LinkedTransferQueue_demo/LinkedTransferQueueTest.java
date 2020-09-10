@@ -1,4 +1,4 @@
-package com.tian.concurrent.queue.LinkedTransferQueue_demo;
+package com.tian.concurrent.queue.blockinQeque.LinkedTransferQueue_demo;
 
 import com.tian.concurrent.model.TempObject;
 import org.junit.Test;

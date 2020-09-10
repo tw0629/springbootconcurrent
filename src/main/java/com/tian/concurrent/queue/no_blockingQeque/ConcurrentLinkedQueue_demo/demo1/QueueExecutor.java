@@ -1,4 +1,4 @@
-package com.tian.concurrent.queue.ConcurrentLinkedQueue_demo.demo1;
+package com.tian.concurrent.queue.no_blockingQeque.ConcurrentLinkedQueue_demo.demo1;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ConcurrentLinkedQueue;

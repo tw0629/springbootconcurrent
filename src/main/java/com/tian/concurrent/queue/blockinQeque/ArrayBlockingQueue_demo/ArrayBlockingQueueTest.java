@@ -1,4 +1,4 @@
-package com.tian.concurrent.queue.ArrayBlockingQueue_demo;
+package com.tian.concurrent.queue.blockinQeque.ArrayBlockingQueue_demo;
 
 import org.junit.Test;
 

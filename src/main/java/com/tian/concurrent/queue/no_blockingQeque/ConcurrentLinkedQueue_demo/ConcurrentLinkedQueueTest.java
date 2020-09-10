@@ -1,4 +1,4 @@
-package com.tian.concurrent.queue.ConcurrentLinkedQueue_demo;
+package com.tian.concurrent.queue.no_blockingQeque.ConcurrentLinkedQueue_demo;
 
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.CountDownLatch;

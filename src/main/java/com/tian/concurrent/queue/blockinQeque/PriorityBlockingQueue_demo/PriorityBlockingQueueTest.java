@@ -1,4 +1,4 @@
-package com.tian.concurrent.queue.PriorityBlockingQueue_demo;
+package com.tian.concurrent.queue.blockinQeque.PriorityBlockingQueue_demo;
 
 import com.tian.concurrent.model.TempObject2;
 import org.junit.Test;

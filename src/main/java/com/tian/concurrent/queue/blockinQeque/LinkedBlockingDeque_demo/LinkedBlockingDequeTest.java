@@ -1,4 +1,4 @@
-package com.tian.concurrent.queue.LinkedBlockingDeque_demo;
+package com.tian.concurrent.queue.blockinQeque.LinkedBlockingDeque_demo;
 
 import com.tian.concurrent.model.TempObject;
 import org.junit.Test;

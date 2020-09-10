@@ -125,27 +125,50 @@ public class ConditionTest {
 
     public static void main(String[] args) throws Exception {
 
-        ConditionTest.testBasket();
-
-//        LockSupport.park();
+        //ConditionTest.testBasket();
+//LockSupport.park()  LockSupport.unpark(thread)
+        LockSupport.park();
 //        LockSupport.unpark();
 //
 //        Lock lock = new ReentrantLock();
 //        Condition condition = lock.newCondition();
 //
-//        ReentrantLock r = new ReentrantLock();
-//        r.lock();
-//        r.tryLock();
-//        r.unlock();
+        ReentrantLock r = new ReentrantLock();
+        r.lock();
+        r.tryLock();
+        r.unlock();
 //
-//        ReentrantReadWriteLock rw = new ReentrantReadWriteLock();
-//        ReentrantReadWriteLock.WriteLock writeLock = rw.writeLock();
-//        writeLock.lock();
-//        ReentrantReadWriteLock.ReadLock readLock = rw.readLock();
-//        readLock.lock();
-
+        ReentrantReadWriteLock rw = new ReentrantReadWriteLock();
+        ReentrantReadWriteLock.WriteLock writeLock = rw.writeLock();
+        //Condition condition1 = writeLock.newCondition();  共享锁是可以创建condition的
+        writeLock.lock();
+        ReentrantReadWriteLock.ReadLock readLock = rw.readLock();
+        readLock.lock();
+        readLock.unlock();
         //Queue
-        SortedMap
+//        SortedMap
+
+       // Enum
+
+        //System.out.println("nowSeason->"+Season.SPRING+", value->"+Season.SPRING.ordinal());
+        //System.out.println("nextSeason->"+Season.getNextSeason(Season.SPRING));
+
+
+        System.out.println("nowSeason->"+Season2.SPRING+", value->"+Season2.SPRING.ordinal());
+        //System.out.println("nextSeason->"+Season2.getNextSeason());
+
+        ReentrantLock r2 = new ReentrantLock();
+        Condition condition = r2.newCondition();
+        condition.await();
+        condition.signal();
+
+        ThreadLocal t = new ThreadLocal();
+        //t.set();
+        //t.get();
+
+
+
+
 
     }
 }

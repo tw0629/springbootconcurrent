@@ -1,4 +1,4 @@
-package com.tian.concurrent.queue.ConcurrentLinkedQueue_demo.demo1;
+package com.tian.concurrent.queue.no_blockingQeque.ConcurrentLinkedQueue_demo.demo1;
 
 import org.junit.After;
 import org.junit.Before;

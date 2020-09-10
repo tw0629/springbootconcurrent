@@ -1,4 +1,4 @@
-package com.tian.concurrent.queue.SynchronousQueue_demo;
+package com.tian.concurrent.queue.blockinQeque.SynchronousQueue_demo;
 
 import org.junit.Test;
 

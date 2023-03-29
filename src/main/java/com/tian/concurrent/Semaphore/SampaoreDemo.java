@@ -1,4 +1,4 @@
-package com.tian.sampaore;
+package com.tian.concurrent.Semaphore;
 
 import org.junit.Test;
 

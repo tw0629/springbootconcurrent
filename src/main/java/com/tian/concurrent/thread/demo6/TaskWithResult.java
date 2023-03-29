@@ -15,7 +15,7 @@ public class TaskWithResult implements Callable<String> {
     }
 
     /**
-     * ÈÎÎñµÄ¾ßÌå¹ı³Ì£¬Ò»µ©ÈÎÎñ´«¸øExecutorServiceµÄsubmit·½·¨£¬Ôò¸Ã·½·¨×Ô¶¯ÔÚÒ»¸öÏß³ÌÉÏÖ´ĞĞ¡£
+     * ä»»åŠ¡çš„å…·ä½“è¿‡ç¨‹ï¼Œä¸€æ—¦ä»»åŠ¡ä¼ ç»™ExecutorServiceçš„submitæ–¹æ³•ï¼Œåˆ™è¯¥æ–¹æ³•è‡ªåŠ¨åœ¨ä¸€ä¸ªçº¿ç¨‹ä¸Šæ‰§è¡Œã€‚
      *
      * @return
      * @throws Exception
@@ -23,10 +23,10 @@ public class TaskWithResult implements Callable<String> {
     @Override
     public String call() throws Exception {
 
-        System.out.println("call()·½·¨±»×Ô¶¯µ÷ÓÃ,¸É»î£¡£¡£¡             " + Thread.currentThread().getName());
-        //Ò»¸öÄ£ÄâºÄÊ±µÄ²Ù×÷
+        System.out.println("call()æ–¹æ³•è¢«è‡ªåŠ¨è°ƒç”¨,å¹²æ´»ï¼ï¼ï¼             " + Thread.currentThread().getName());
+        //ä¸€ä¸ªæ¨¡æ‹Ÿè€—æ—¶çš„æ“ä½œ
         for (int i = 999999; i > 0; i--){} ;
 
-        return "call()·½·¨±»×Ô¶¯µ÷ÓÃ£¬ÈÎÎñµÄ½á¹ûÊÇ£º" + id + "    " + Thread.currentThread().getName();
+        return "call()æ–¹æ³•è¢«è‡ªåŠ¨è°ƒç”¨ï¼Œä»»åŠ¡çš„ç»“æœæ˜¯ï¼š" + id + "    " + Thread.currentThread().getName();
     }
 }

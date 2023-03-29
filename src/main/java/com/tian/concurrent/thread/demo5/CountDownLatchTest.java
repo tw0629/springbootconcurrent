@@ -14,9 +14,9 @@ public class CountDownLatchTest {
         new Thread(){
             public void run() {
                 try {
-                    System.out.println("×ÓÏß³Ì"+Thread.currentThread().getName()+"ÕıÔÚÖ´ĞĞ");
+                    System.out.println("å­çº¿ç¨‹"+Thread.currentThread().getName()+"æ­£åœ¨æ‰§è¡Œ");
                     Thread.sleep(3000);
-                    System.out.println("×ÓÏß³Ì"+Thread.currentThread().getName()+"Ö´ĞĞÍê±Ï");
+                    System.out.println("å­çº¿ç¨‹"+Thread.currentThread().getName()+"æ‰§è¡Œå®Œæ¯•");
 
                     //CountDownLatch
                     latch.countDown();
@@ -30,9 +30,9 @@ public class CountDownLatchTest {
         new Thread(){
             public void run() {
                 try {
-                    System.out.println("×ÓÏß³Ì"+Thread.currentThread().getName()+"ÕıÔÚÖ´ĞĞ");
+                    System.out.println("å­çº¿ç¨‹"+Thread.currentThread().getName()+"æ­£åœ¨æ‰§è¡Œ");
                     Thread.sleep(3000);
-                    System.out.println("×ÓÏß³Ì"+Thread.currentThread().getName()+"Ö´ĞĞÍê±Ï");
+                    System.out.println("å­çº¿ç¨‹"+Thread.currentThread().getName()+"æ‰§è¡Œå®Œæ¯•");
 
                     //CountDownLatch
                     latch.countDown();
@@ -44,13 +44,13 @@ public class CountDownLatchTest {
         }.start();
 
         try {
-            System.out.println("µÈ´ı2¸ö×ÓÏß³ÌÖ´ĞĞÍê±Ï...");
+            System.out.println("ç­‰å¾…2ä¸ªå­çº¿ç¨‹æ‰§è¡Œå®Œæ¯•...");
 
             //CountDownLatch
             latch.await();
 
-            System.out.println("2¸ö×ÓÏß³ÌÒÑ¾­Ö´ĞĞÍê±Ï");
-            System.out.println("¼ÌĞøÖ´ĞĞÖ÷Ïß³Ì");
+            System.out.println("2ä¸ªå­çº¿ç¨‹å·²ç»æ‰§è¡Œå®Œæ¯•");
+            System.out.println("ç»§ç»­æ‰§è¡Œä¸»çº¿ç¨‹");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

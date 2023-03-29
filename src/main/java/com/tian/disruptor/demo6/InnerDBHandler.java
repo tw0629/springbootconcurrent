@@ -4,7 +4,7 @@ import com.lmax.disruptor.EventHandler;
 import com.lmax.disruptor.WorkHandler;
 
 /**
- * ½»Ò×Á÷Ë®Èë¿â²Ù×÷
+ * äº¤æ˜“æµæ°´å…¥åº“æ“ä½œ
  *
  * @author David Tian
  * @since 2019-05-09
@@ -21,6 +21,6 @@ public class InnerDBHandler implements EventHandler<TransactionEvent>, WorkHandl
     @Override
     public void onEvent(TransactionEvent arg0) throws Exception {
         arg0.setSeq(arg0.getSeq()*10000);
-        System.out.println("À¹½ØÈë¿âÁ÷Ë®ºÅ------------  "+arg0.getSeq());
+        System.out.println("æ‹¦æˆªå…¥åº“æµæ°´å·------------  "+arg0.getSeq());
     }
 }

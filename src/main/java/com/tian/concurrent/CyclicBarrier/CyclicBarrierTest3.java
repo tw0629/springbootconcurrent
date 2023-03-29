@@ -5,7 +5,7 @@ import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
-/** ²¢·¢¹¤¾ß CyclicBarrier
+/** å¹¶å‘å·¥å…· CyclicBarrier
  *
  * @author David Tian
  * @since 2019-04-24
@@ -13,11 +13,11 @@ import java.util.concurrent.TimeoutException;
 public class CyclicBarrierTest3 {
 
     /**
-     * 3 ¿´Ò»ÏÂÎªawaitÖ¸¶¨Ê±¼äµÄĞ§¹û
+     * 3 çœ‹ä¸€ä¸‹ä¸ºawaitæŒ‡å®šæ—¶é—´çš„æ•ˆæœ
      *
      *
-     * ÉÏÃæµÄ´úÂëÔÚmain·½·¨µÄforÑ­»·ÖĞ£¬¹ÊÒâÈÃ×îºóÒ»¸öÏß³ÌÆô¶¯ÑÓ³Ù£¬ÒòÎªÔÚÇ°ÃæÈı¸öÏß³Ì¶¼´ïµ½barrierÖ®ºó£¬
-     * µÈ´ıÁËÖ¸¶¨µÄÊ±¼ä·¢ÏÖµÚËÄ¸öÏß³Ì»¹Ã»ÓĞ´ïµ½barrier£¬¾ÍÅ×³öÒì³£²¢¼ÌĞøÖ´ĞĞºóÃæµÄÈÎÎñ¡£
+     * ä¸Šé¢çš„ä»£ç åœ¨mainæ–¹æ³•çš„forå¾ªç¯ä¸­ï¼Œæ•…æ„è®©æœ€åä¸€ä¸ªçº¿ç¨‹å¯åŠ¨å»¶è¿Ÿï¼Œå› ä¸ºåœ¨å‰é¢ä¸‰ä¸ªçº¿ç¨‹éƒ½è¾¾åˆ°barrierä¹‹åï¼Œ
+     * ç­‰å¾…äº†æŒ‡å®šçš„æ—¶é—´å‘ç°ç¬¬å››ä¸ªçº¿ç¨‹è¿˜æ²¡æœ‰è¾¾åˆ°barrierï¼Œå°±æŠ›å‡ºå¼‚å¸¸å¹¶ç»§ç»­æ‰§è¡Œåé¢çš„ä»»åŠ¡ã€‚
      *
      *
      * @param args
@@ -31,7 +31,7 @@ public class CyclicBarrierTest3 {
                 new Writer(barrier).start();
             else {
                 try {
-                    //×îºóÒ»¸öÏß³Ì¶àµÈÁË5Ãë
+                    //æœ€åä¸€ä¸ªçº¿ç¨‹å¤šç­‰äº†5ç§’
                     Thread.sleep(5000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -48,13 +48,13 @@ public class CyclicBarrierTest3 {
 
         @Override
         public void run() {
-            System.out.println("Ïß³Ì"+Thread.currentThread().getName()+"ÕıÔÚĞ´ÈëÊı¾İ...");
+            System.out.println("çº¿ç¨‹"+Thread.currentThread().getName()+"æ­£åœ¨å†™å…¥æ•°æ®...");
             try {
-                Thread.sleep(5000);      //ÒÔË¯ÃßÀ´Ä£ÄâĞ´ÈëÊı¾İ²Ù×÷
-                System.out.println("Ïß³Ì"+Thread.currentThread().getName()+"Ğ´ÈëÊı¾İÍê±Ï£¬µÈ´ıÆäËûÏß³ÌĞ´ÈëÍê±Ï");
+                Thread.sleep(5000);      //ä»¥ç¡çœ æ¥æ¨¡æ‹Ÿå†™å…¥æ•°æ®æ“ä½œ
+                System.out.println("çº¿ç¨‹"+Thread.currentThread().getName()+"å†™å…¥æ•°æ®å®Œæ¯•ï¼Œç­‰å¾…å…¶ä»–çº¿ç¨‹å†™å…¥å®Œæ¯•");
                 try {
 
-                    //todo  ËµÃ÷×î¶àµÈ´ı2Ãë
+                    //todo  è¯´æ˜æœ€å¤šç­‰å¾…2ç§’
                     cyclicBarrier.await(2000, TimeUnit.MILLISECONDS);
                 } catch (TimeoutException e) {
                     // TODO Auto-generated catch block
@@ -65,39 +65,39 @@ public class CyclicBarrierTest3 {
             }catch(BrokenBarrierException e){
                 e.printStackTrace();
             }
-            System.out.println(Thread.currentThread().getName()+"ËùÓĞÏß³ÌĞ´ÈëÍê±Ï£¬¼ÌĞø´¦ÀíÆäËûÈÎÎñ...");
+            System.out.println(Thread.currentThread().getName()+"æ‰€æœ‰çº¿ç¨‹å†™å…¥å®Œæ¯•ï¼Œç»§ç»­å¤„ç†å…¶ä»–ä»»åŠ¡...");
         }
     }
 
-    /**´òÓ¡½á¹û£º
+    /**æ‰“å°ç»“æœï¼š
      *
-     * Ïß³ÌThread-0ÕıÔÚĞ´ÈëÊı¾İ...
-     * Ïß³ÌThread-1ÕıÔÚĞ´ÈëÊı¾İ...
-     * Ïß³ÌThread-2ÕıÔÚĞ´ÈëÊı¾İ...
-     * Ïß³ÌThread-0Ğ´ÈëÊı¾İÍê±Ï£¬µÈ´ıÆäËûÏß³ÌĞ´ÈëÍê±Ï
-     * Ïß³ÌThread-2Ğ´ÈëÊı¾İÍê±Ï£¬µÈ´ıÆäËûÏß³ÌĞ´ÈëÍê±Ï
-     * Ïß³ÌThread-1Ğ´ÈëÊı¾İÍê±Ï£¬µÈ´ıÆäËûÏß³ÌĞ´ÈëÍê±Ï
-     * Ïß³ÌThread-3ÕıÔÚĞ´ÈëÊı¾İ...
+     * çº¿ç¨‹Thread-0æ­£åœ¨å†™å…¥æ•°æ®...
+     * çº¿ç¨‹Thread-1æ­£åœ¨å†™å…¥æ•°æ®...
+     * çº¿ç¨‹Thread-2æ­£åœ¨å†™å…¥æ•°æ®...
+     * çº¿ç¨‹Thread-0å†™å…¥æ•°æ®å®Œæ¯•ï¼Œç­‰å¾…å…¶ä»–çº¿ç¨‹å†™å…¥å®Œæ¯•
+     * çº¿ç¨‹Thread-2å†™å…¥æ•°æ®å®Œæ¯•ï¼Œç­‰å¾…å…¶ä»–çº¿ç¨‹å†™å…¥å®Œæ¯•
+     * çº¿ç¨‹Thread-1å†™å…¥æ•°æ®å®Œæ¯•ï¼Œç­‰å¾…å…¶ä»–çº¿ç¨‹å†™å…¥å®Œæ¯•
+     * çº¿ç¨‹Thread-3æ­£åœ¨å†™å…¥æ•°æ®...
      * java.util.concurrent.BrokenBarrierException
      * 	at java.util.concurrent.CyclicBarrier.dowait(CyclicBarrier.java:250)
      * 	at java.util.concurrent.CyclicBarrier.await(CyclicBarrier.java:435)
      * 	at com.tain.concurrent.CyclicBarrier.CyclicBarrierTest3$Writer.run(CyclicBarrierTest3.java:50)
-     * Thread-1ËùÓĞÏß³ÌĞ´ÈëÍê±Ï£¬¼ÌĞø´¦ÀíÆäËûÈÎÎñ...
+     * Thread-1æ‰€æœ‰çº¿ç¨‹å†™å…¥å®Œæ¯•ï¼Œç»§ç»­å¤„ç†å…¶ä»–ä»»åŠ¡...
      * java.util.concurrent.BrokenBarrierException
      * 	at java.util.concurrent.CyclicBarrier.dowait(CyclicBarrier.java:250)
      * 	at java.util.concurrent.CyclicBarrier.await(CyclicBarrier.java:435)
-     * 	at com.tain.concurrent.CyclicBarrier.CyclicBarrierTest3$Writer.run(CyclicBarrierTest3.java:50)Thread-2ËùÓĞÏß³ÌĞ´ÈëÍê±Ï£¬¼ÌĞø´¦ÀíÆäËûÈÎÎñ...
+     * 	at com.tain.concurrent.CyclicBarrier.CyclicBarrierTest3$Writer.run(CyclicBarrierTest3.java:50)Thread-2æ‰€æœ‰çº¿ç¨‹å†™å…¥å®Œæ¯•ï¼Œç»§ç»­å¤„ç†å…¶ä»–ä»»åŠ¡...
      *
      * java.util.concurrent.TimeoutException
      * 	at java.util.concurrent.CyclicBarrier.dowait(CyclicBarrier.java:257)
      * 	at java.util.concurrent.CyclicBarrier.await(CyclicBarrier.java:435)
      * 	at com.tain.concurrent.CyclicBarrier.CyclicBarrierTest3$Writer.run(CyclicBarrierTest3.java:50)
-     * Thread-0ËùÓĞÏß³ÌĞ´ÈëÍê±Ï£¬¼ÌĞø´¦ÀíÆäËûÈÎÎñ...
-     * Ïß³ÌThread-3Ğ´ÈëÊı¾İÍê±Ï£¬µÈ´ıÆäËûÏß³ÌĞ´ÈëÍê±Ï
+     * Thread-0æ‰€æœ‰çº¿ç¨‹å†™å…¥å®Œæ¯•ï¼Œç»§ç»­å¤„ç†å…¶ä»–ä»»åŠ¡...
+     * çº¿ç¨‹Thread-3å†™å…¥æ•°æ®å®Œæ¯•ï¼Œç­‰å¾…å…¶ä»–çº¿ç¨‹å†™å…¥å®Œæ¯•
      * java.util.concurrent.BrokenBarrierException
      * 	at java.util.concurrent.CyclicBarrier.dowait(CyclicBarrier.java:207)
      * 	at java.util.concurrent.CyclicBarrier.await(CyclicBarrier.java:435)
      * 	at com.tain.concurrent.CyclicBarrier.CyclicBarrierTest3$Writer.run(CyclicBarrierTest3.java:50)
-     * Thread-3ËùÓĞÏß³ÌĞ´ÈëÍê±Ï£¬¼ÌĞø´¦ÀíÆäËûÈÎÎñ...
+     * Thread-3æ‰€æœ‰çº¿ç¨‹å†™å…¥å®Œæ¯•ï¼Œç»§ç»­å¤„ç†å…¶ä»–ä»»åŠ¡...
      */
 }

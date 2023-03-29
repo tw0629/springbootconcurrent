@@ -12,15 +12,15 @@ import java.util.concurrent.*;
 public class FutureTaskTest {
 
     public static void main(String[] args) {
-        //µÚÒ»ÖÖ·½Ê½
+        //ç¬¬ä¸€ç§æ–¹å¼
         ExecutorService executor = Executors.newCachedThreadPool();
         Task task = new Task();
-        //×¢Òâ£º½«Task°ü×°³ÉFutureTask
+        //æ³¨æ„ï¼šå°†TaskåŒ…è£…æˆFutureTask
         FutureTask<Integer> futureTask = new FutureTask<Integer>(task);
         executor.submit(futureTask);
         executor.shutdown();
 
-        //µÚ¶şÖÖ·½Ê½£¬×¢ÒâÕâÖÖ·½Ê½ºÍµÚÒ»ÖÖ·½Ê½Ğ§¹ûÊÇÀàËÆµÄ£¬Ö»²»¹ıÒ»¸öÊ¹ÓÃµÄÊÇExecutorService£¬Ò»¸öÊ¹ÓÃµÄÊÇThread
+        //ç¬¬äºŒç§æ–¹å¼ï¼Œæ³¨æ„è¿™ç§æ–¹å¼å’Œç¬¬ä¸€ç§æ–¹å¼æ•ˆæœæ˜¯ç±»ä¼¼çš„ï¼Œåªä¸è¿‡ä¸€ä¸ªä½¿ç”¨çš„æ˜¯ExecutorServiceï¼Œä¸€ä¸ªä½¿ç”¨çš„æ˜¯Thread
         /*Task task = new Task();
         FutureTask<Integer> futureTask = new FutureTask<Integer>(task);
         Thread thread = new Thread(futureTask);
@@ -32,17 +32,17 @@ public class FutureTaskTest {
 //            e1.printStackTrace();
 //        }
 
-        System.out.println("FutureTaskTestÒ»Ö÷Ïß³ÌÔÚÖ´ĞĞÈÎÎñ");
+        System.out.println("FutureTaskTestä¸€ä¸»çº¿ç¨‹åœ¨æ‰§è¡Œä»»åŠ¡");
 
         try {
-            System.out.println("FutureTaskTestÒ»taskÔËĞĞ½á¹û"+futureTask.get());
+            System.out.println("FutureTaskTestä¸€taskè¿è¡Œç»“æœ"+futureTask.get());
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
 
-        System.out.println("ËùÓĞÈÎÎñÖ´ĞĞÍê±Ï");
+        System.out.println("æ‰€æœ‰ä»»åŠ¡æ‰§è¡Œå®Œæ¯•");
     }
 
 
@@ -65,11 +65,11 @@ public class FutureTaskTest {
 
         boolean done = task.isDone();
         long l1 = System.currentTimeMillis();
-        String s = task.get();//Õâ¸ö·½·¨»á×èÈû£¬Ö±µ½ÈÎÎñÍê³ÉÊ±»á·µ»Ø
+        String s = task.get();//è¿™ä¸ªæ–¹æ³•ä¼šé˜»å¡ï¼Œç›´åˆ°ä»»åŠ¡å®Œæˆæ—¶ä¼šè¿”å›
         boolean done1 = task.isDone();
         long l2 = System.currentTimeMillis();
 
-        System.out.println("ÈÎÎñ·µ»Ø½á¹û = "+done+"   "+done1+"    time = "+(l2-l1)+"   "+s);
+        System.out.println("ä»»åŠ¡è¿”å›ç»“æœ = "+done+"   "+done1+"    time = "+(l2-l1)+"   "+s);
 
 
 

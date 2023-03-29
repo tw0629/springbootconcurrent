@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class RecursiveActionTest extends RecursiveAction {
     /**
-     * ãĞÖµ£¬Ã¿¸ö"Ğ¡ÈÎÎñ"×î¶àÖ»´òÓ¡5¸öÊı
+     * é˜ˆå€¼ï¼Œæ¯ä¸ª"å°ä»»åŠ¡"æœ€å¤šåªæ‰“å°5ä¸ªæ•°
      */
     private static final int MAX = 5;
 
@@ -25,36 +25,36 @@ public class RecursiveActionTest extends RecursiveAction {
 
     @Override
     protected void compute() {
-        // µ±end-startµÄÖµĞ¡ÓÚMAXÊ±ºò£¬¿ªÊ¼´òÓ¡
+        // å½“end-startçš„å€¼å°äºMAXæ—¶å€™ï¼Œå¼€å§‹æ‰“å°
         if ((end - start) < MAX) {
             for (int i = start; i < end; i++) {
-                System.out.println(Thread.currentThread().getName() + "µÄiÖµ:" + i);
+                System.out.println(Thread.currentThread().getName() + "çš„iå€¼:" + i);
             }
         } else {
             System.out.println(Thread.currentThread().getName() + "====" + start + "====" + end);
 
-            // ½«´óÈÎÎñ·Ö½â³ÉÁ½¸öĞ¡ÈÎÎñ
+            // å°†å¤§ä»»åŠ¡åˆ†è§£æˆä¸¤ä¸ªå°ä»»åŠ¡
             int middle = (start + end) / 2;
             RecursiveActionTest left = new RecursiveActionTest(start, middle);
             RecursiveActionTest right = new RecursiveActionTest(middle, end);
 
-            // ²¢ĞĞÖ´ĞĞÁ½¸öĞ¡ÈÎÎñ
+            // å¹¶è¡Œæ‰§è¡Œä¸¤ä¸ªå°ä»»åŠ¡
             left.fork();
             right.fork();
 
-            //ÒòÎªRecursiveActionÃ»ÓĞ·µ»Ø½á¹û
+            //å› ä¸ºRecursiveActionæ²¡æœ‰è¿”å›ç»“æœ
             //left.join()
         }
     }
 
     public static void main(String[] args) throws Exception {
-        // Ä¬ÈÏÏß³ÌÊı Âß¼­CPUµÄ¸öÊı
+        // é»˜è®¤çº¿ç¨‹æ•° é€»è¾‘CPUçš„ä¸ªæ•°
         ForkJoinPool forkJoinPool = new ForkJoinPool();
-        // Ìá½»¿É·Ö½âµÄPrintTaskÈÎÎñ
+        // æäº¤å¯åˆ†è§£çš„PrintTaskä»»åŠ¡
         forkJoinPool.submit(new RecursiveActionTest(0, 20));
-        // ×èÈûµ±Ç°Ïß³ÌÖ±µ½ ForkJoinPool ÖĞËùÓĞµÄÈÎÎñ¶¼Ö´ĞĞ½áÊø
+        // é˜»å¡å½“å‰çº¿ç¨‹ç›´åˆ° ForkJoinPool ä¸­æ‰€æœ‰çš„ä»»åŠ¡éƒ½æ‰§è¡Œç»“æŸ
         forkJoinPool.awaitTermination(2, TimeUnit.SECONDS);
-        // ¹Ø±ÕÏß³Ì³Ø
+        // å…³é—­çº¿ç¨‹æ± 
         forkJoinPool.shutdown();
     }
 }

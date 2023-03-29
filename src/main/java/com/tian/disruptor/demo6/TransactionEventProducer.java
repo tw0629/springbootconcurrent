@@ -8,14 +8,14 @@ import com.lmax.disruptor.dsl.ProducerType;
 import java.util.concurrent.*;
 
 /**
- * Éú²úÕß¡¢·¢²¼ÊÂ¼ş
+ * ç”Ÿäº§è€…ã€å‘å¸ƒäº‹ä»¶
  *
  * @author David Tian
  * @since 2019-05-09
  *
  */
 public class TransactionEventProducer implements Runnable {
-    // Ïß³ÌÍ¬²½¸¨ÖúÀà - ÔÊĞíÒ»¸ö»ò¶à¸öÏß³ÌÒ»Ö±µÈ´ı
+    // çº¿ç¨‹åŒæ­¥è¾…åŠ©ç±» - å…è®¸ä¸€ä¸ªæˆ–å¤šä¸ªçº¿ç¨‹ä¸€ç›´ç­‰å¾…
     CountDownLatch cdl;
     Disruptor disruptor;
 
@@ -35,73 +35,73 @@ public class TransactionEventProducer implements Runnable {
     public void run() {
         AmountTrasfer th;
         try {
-            //Event¶ÔÏó³õÊ¼»¯Àà
+            //Eventå¯¹è±¡åˆå§‹åŒ–ç±»
             th = new AmountTrasfer();
-            //·¢²¼ÊÂ¼ş
+            //å‘å¸ƒäº‹ä»¶
             disruptor.publishEvent(th);
         } finally {
-            // µİ¼õËø´æÆ÷µÄ¼ÆÊı -Èç¹û¼ÆÊıµ½´ïÁã£¬ÔòÊÍ·ÅËùÓĞµÈ´ıµÄÏß³Ì¡£
+            // é€’å‡é”å­˜å™¨çš„è®¡æ•° -å¦‚æœè®¡æ•°åˆ°è¾¾é›¶ï¼Œåˆ™é‡Šæ”¾æ‰€æœ‰ç­‰å¾…çš„çº¿ç¨‹ã€‚
             cdl.countDown();
         }
     }
 
-    // ¶¨Òå»·´óĞ¡£¬2µÄ±¶Êı
+    // å®šä¹‰ç¯å¤§å°ï¼Œ2çš„å€æ•°
     private static final int BUFFER_SIZE = 1024;
-    // ¶¨Òå´¦ÀíÊÂ¼şµÄÏß³Ì»òÏß³Ì³Ø
+    // å®šä¹‰å¤„ç†äº‹ä»¶çš„çº¿ç¨‹æˆ–çº¿ç¨‹æ± 
     ExecutorService pool = Executors.newFixedThreadPool(7);
 
     /**
-     * Åú´¦ÀíÄ£Ê½
+     * æ‰¹å¤„ç†æ¨¡å¼
      * @throws Exception
      */
     public void BatchDeal() throws Exception {
-        //´´½¨Ò»¸öµ¥Éú²úÕßµÄringBuffer
+        //åˆ›å»ºä¸€ä¸ªå•ç”Ÿäº§è€…çš„ringBuffer
         final RingBuffer<TransactionEvent> ringBuffer = RingBuffer.createSingleProducer(new EventFactory<TransactionEvent>() {
 
             @Override
             public TransactionEvent newInstance() {
                 return new TransactionEvent();
             }
-            //ÉèÖÃµÈ´ı²ßÂÔ£¬YieldingWaitStrategy µÄĞÔÄÜÊÇ×îºÃµÄ£¬ÊÊºÏÓÃÓÚµÍÑÓ³ÙµÄÏµÍ³¡£
+            //è®¾ç½®ç­‰å¾…ç­–ç•¥ï¼ŒYieldingWaitStrategy çš„æ€§èƒ½æ˜¯æœ€å¥½çš„ï¼Œé€‚åˆç”¨äºä½å»¶è¿Ÿçš„ç³»ç»Ÿã€‚
         }, BUFFER_SIZE,new YieldingWaitStrategy());
-        //´´½¨SequenceBarrier
+        //åˆ›å»ºSequenceBarrier
         SequenceBarrier barrier = ringBuffer.newBarrier();
-        //´´½¨ÏûÏ¢´¦ÀíÆ÷
+        //åˆ›å»ºæ¶ˆæ¯å¤„ç†å™¨
         BatchEventProcessor<TransactionEvent> eventProcessor = new BatchEventProcessor<TransactionEvent>(ringBuffer,barrier,new InnerDBHandler());
-        //¹¹Ôì·´ÏòÒÀÀµ£¬eventProcessorÖ®¼äÃ»ÓĞÒÀÀµ¹ØÏµÔò¿ÉÒÔ½«SequenceÖ±½Ó¼ÓÈë
+        //æ„é€ åå‘ä¾èµ–ï¼ŒeventProcessorä¹‹é—´æ²¡æœ‰ä¾èµ–å…³ç³»åˆ™å¯ä»¥å°†Sequenceç›´æ¥åŠ å…¥
         ringBuffer.addGatingSequences(eventProcessor.getSequence());
-        //Ìá½»ÏûÏ¢´¦ÀíÆ÷
+        //æäº¤æ¶ˆæ¯å¤„ç†å™¨
         pool.submit(eventProcessor);
-        //Ìá½»Ò»¸öÓĞ·µ»ØÖµµÄÈÎÎñÓÃÓÚÖ´ĞĞ£¬·µ»ØÒ»¸ö±íÊ¾ÈÎÎñµÄÎ´¾ö½á¹ûµÄ Future¡£
+        //æäº¤ä¸€ä¸ªæœ‰è¿”å›å€¼çš„ä»»åŠ¡ç”¨äºæ‰§è¡Œï¼Œè¿”å›ä¸€ä¸ªè¡¨ç¤ºä»»åŠ¡çš„æœªå†³ç»“æœçš„ Futureã€‚
         Future<Void> submit = pool.submit(new Callable<Void>() {
-            //¼ÆËã½á¹û£¬Èç¹ûÎŞ·¨¼ÆËã½á¹ûÔòÅ×³öÒì³£
+            //è®¡ç®—ç»“æœï¼Œå¦‚æœæ— æ³•è®¡ç®—ç»“æœåˆ™æŠ›å‡ºå¼‚å¸¸
             @Override
             public Void call() throws Exception {
                 long seq;
                 for (int i=0;i<7000;i++) {
-                    System.out.println("Éú²úÕß£º"+i);
-                    //»·ÀïÒ»¸ö¿ÉÓÃµÄÇø¿é
+                    System.out.println("ç”Ÿäº§è€…ï¼š"+i);
+                    //ç¯é‡Œä¸€ä¸ªå¯ç”¨çš„åŒºå—
                     seq=ringBuffer.next();
-                    //Îª»·ÀïµÄ¶ÔÏó¸³Öµ
+                    //ä¸ºç¯é‡Œçš„å¯¹è±¡èµ‹å€¼
                     ringBuffer.get(seq).setAmount(Math.random()*10);
                     System.out.println("TransactionEvent:   "+ringBuffer.get(seq).toString());
-                    //·¢²¼Õâ¸öÇø¿éµÄÊı¾İ£¬
+                    //å‘å¸ƒè¿™ä¸ªåŒºå—çš„æ•°æ®ï¼Œ
                     ringBuffer.publish(seq);
                 }
                 return null;
             }
         });
-        //µÈ´ı¼ÆËãÍê³É£¬È»ºó»ñÈ¡Æä½á¹û¡£
+        //ç­‰å¾…è®¡ç®—å®Œæˆï¼Œç„¶åè·å–å…¶ç»“æœã€‚
         submit.get();
         Thread.sleep(1000);
-        //¹Ø±ÕÏûÏ¢´¦ÀíÆ÷
+        //å…³é—­æ¶ˆæ¯å¤„ç†å™¨
         eventProcessor.halt();
-        //¹Ø±ÕÏß³Ì³Ø
+        //å…³é—­çº¿ç¨‹æ± 
         pool.shutdown();
     }
 
     /**
-     * ¹¤×÷³ØÄ£Ê½
+     * å·¥ä½œæ± æ¨¡å¼
      * @throws Exception
      */
     @SuppressWarnings("unchecked")
@@ -114,9 +114,9 @@ public class TransactionEventProducer implements Runnable {
             }
         }, BUFFER_SIZE, new YieldingWaitStrategy());
         SequenceBarrier barrier = ringBuffer.newBarrier();
-        //´´½¨Ò»¸ö¶¨³¤µÄÏß³Ì³Ø
+        //åˆ›å»ºä¸€ä¸ªå®šé•¿çš„çº¿ç¨‹æ± 
         ExecutorService pool2 = Executors.newFixedThreadPool(5);
-        //½»Ò×Á÷Ë®Èë¿â²Ù×÷
+        //äº¤æ˜“æµæ°´å…¥åº“æ“ä½œ
         WorkHandler<TransactionEvent> innerDBHandler = new InnerDBHandler();
         ExceptionHandler arg2;
         WorkerPool<TransactionEvent> workerPool = new WorkerPool<TransactionEvent>(ringBuffer, barrier, new IgnoreExceptionHandler(), innerDBHandler);
@@ -133,17 +133,17 @@ public class TransactionEventProducer implements Runnable {
     }
 
     /**
-     * disruptor´¦ÀíÆ÷ÓÃÀ´×é×°Éú²úÕßºÍÏû·ÑÕß
+     * disruptorå¤„ç†å™¨ç”¨æ¥ç»„è£…ç”Ÿäº§è€…å’Œæ¶ˆè´¹è€…
      * @throws Exception
      */
     @SuppressWarnings("unchecked")
     public void disruptorManage() throws Exception{
-        //´´½¨ÓÃÓÚ´¦ÀíÊÂ¼şµÄÏß³Ì³Ø
+        //åˆ›å»ºç”¨äºå¤„ç†äº‹ä»¶çš„çº¿ç¨‹æ± 
         ExecutorService pool2 = Executors.newFixedThreadPool(7);
-        //´´½¨disruptor¶ÔÏó
+        //åˆ›å»ºdisruptorå¯¹è±¡
         /**
-         * ÓÃÀ´Ö¸¶¨Êı¾İÉú³ÉÕßÓĞÒ»¸ö»¹ÊÇ¶à¸ö£¬ÓĞÁ½¸ö¿ÉÑ¡ÖµProducerType.SINGLEºÍProducerType.MULTI
-         * BusySpinWaitStrategyÊÇÒ»ÖÖÑÓ³Ù×îµÍ£¬×îºÄCPUµÄ²ßÂÔ¡£Í¨³£ÓÃÓÚÏû·ÑÏß³ÌÊıĞ¡ÓÚCPUÊıµÄ³¡¾°
+         * ç”¨æ¥æŒ‡å®šæ•°æ®ç”Ÿæˆè€…æœ‰ä¸€ä¸ªè¿˜æ˜¯å¤šä¸ªï¼Œæœ‰ä¸¤ä¸ªå¯é€‰å€¼ProducerType.SINGLEå’ŒProducerType.MULTI
+         * BusySpinWaitStrategyæ˜¯ä¸€ç§å»¶è¿Ÿæœ€ä½ï¼Œæœ€è€—CPUçš„ç­–ç•¥ã€‚é€šå¸¸ç”¨äºæ¶ˆè´¹çº¿ç¨‹æ•°å°äºCPUæ•°çš„åœºæ™¯
          */
         Disruptor<TransactionEvent> disruptor2 = new Disruptor<TransactionEvent>(new EventFactory<TransactionEvent>() {
 
@@ -152,21 +152,21 @@ public class TransactionEventProducer implements Runnable {
                 return new TransactionEvent();
             }
         },BUFFER_SIZE,pool2, ProducerType.SINGLE,new BusySpinWaitStrategy());
-        //´´½¨Ïû·ÑÕß×é£¬ÏÈÖ´ĞĞÀ¹½Ø½»Ò×Á÷Ë®ºÍÈë¿â²Ù×÷
+        //åˆ›å»ºæ¶ˆè´¹è€…ç»„ï¼Œå…ˆæ‰§è¡Œæ‹¦æˆªäº¤æ˜“æµæ°´å’Œå…¥åº“æ“ä½œ
         EventHandlerGroup<TransactionEvent> eventsWith = disruptor2.handleEventsWith(new InnerDBHandler(),new TransHandler());
-        //ÔÚ½øĞĞ·çÏÕ½»Ò×µÄ2´ÎÑéÖ¤²Ù×÷
+        //åœ¨è¿›è¡Œé£é™©äº¤æ˜“çš„2æ¬¡éªŒè¯æ“ä½œ
         eventsWith.then(new SendMsgHandler());
-        //Æô¶¯disruptor
+        //å¯åŠ¨disruptor
         disruptor2.start();
-        //ÔÚÏß³ÌÄÜÍ¨¹ı await()Ö®Ç°£¬±ØĞëµ÷ÓÃ countDown() µÄ´ÎÊı
+        //åœ¨çº¿ç¨‹èƒ½é€šè¿‡ await()ä¹‹å‰ï¼Œå¿…é¡»è°ƒç”¨ countDown() çš„æ¬¡æ•°
         CountDownLatch latch = new CountDownLatch(1);
-        //½«·â×°ºÃµÄTransactionEventProducerÀàÌá½»
+        //å°†å°è£…å¥½çš„TransactionEventProducerç±»æäº¤
         pool2.submit(new TransactionEventProducer(latch,disruptor2));
-        //Ê¹µ±Ç°Ïß³ÌÔÚËø´æÆ÷µ¹¼ÆÊıÖÁÁãÖ®Ç°Ò»Ö±µÈ´ı,ÒÔ±£Ö¤Éú²úÕßÈÎÎñÍêÈ«Ïû·Ñµô
+        //ä½¿å½“å‰çº¿ç¨‹åœ¨é”å­˜å™¨å€’è®¡æ•°è‡³é›¶ä¹‹å‰ä¸€ç›´ç­‰å¾…,ä»¥ä¿è¯ç”Ÿäº§è€…ä»»åŠ¡å®Œå…¨æ¶ˆè´¹æ‰
         latch.await();
-        //¹Ø±ÕdisruptorÒµÎñÂß¼­´¦ÀíÆ÷
+        //å…³é—­disruptorä¸šåŠ¡é€»è¾‘å¤„ç†å™¨
         disruptor2.shutdown();
-        //Ïú»ÙÏß³Ì³Ø
+        //é”€æ¯çº¿ç¨‹æ± 
         pool2.shutdown();
     }
 }

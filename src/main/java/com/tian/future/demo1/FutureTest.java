@@ -21,17 +21,17 @@ public class FutureTest {
 //            e1.printStackTrace();
 //        }
 
-        System.out.println("FutureTestÒ»Ö÷Ïß³ÌÔÚÖ´ĞĞÈÎÎñ");
+        System.out.println("FutureTestä¸€ä¸»çº¿ç¨‹åœ¨æ‰§è¡Œä»»åŠ¡");
 
         try {
 
-            System.out.println("FutureTestÒ»taskÔËĞĞ½á¹û"+result.get());
+            System.out.println("FutureTestä¸€taskè¿è¡Œç»“æœ"+result.get());
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
 
-        System.out.println("ËùÓĞÈÎÎñÖ´ĞĞÍê±Ï");
+        System.out.println("æ‰€æœ‰ä»»åŠ¡æ‰§è¡Œå®Œæ¯•");
     }
 }

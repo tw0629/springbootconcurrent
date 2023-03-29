@@ -1,4 +1,4 @@
-package com.tian.AQS_CAS;
+package com.tian.concurrent.AQS_CAS;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;

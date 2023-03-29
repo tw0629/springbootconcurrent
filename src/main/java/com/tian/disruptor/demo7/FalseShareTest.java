@@ -1,6 +1,6 @@
 package com.tian.disruptor.demo7;
 
-/** Î±¹²ÏíÒ»Ìî³ä»º´æĞĞ
+/** ä¼ªå…±äº«ä¸€å¡«å……ç¼“å­˜è¡Œ
  * @author David Tian
  * @since 2019-05-10
  */
@@ -35,7 +35,7 @@ public class FalseShareTest implements Runnable {
             final long end = System.nanoTime();
             SUM_TIME += end - start;
         }
-        System.out.println("Æ½¾ùºÄÊ±£º"+SUM_TIME/10);
+        System.out.println("å¹³å‡è€—æ—¶ï¼š"+SUM_TIME/10);
     }
 
     private static void runTest() throws InterruptedException {
@@ -61,7 +61,7 @@ public class FalseShareTest implements Runnable {
 
     public final static class VolatileLong {
         public volatile long value = 0L;
-        public long p1, p2, p3, p4, p5, p6;     //ÆÁ±Î´ËĞĞ
+        public long p1, p2, p3, p4, p5, p6;     //å±è”½æ­¤è¡Œ
     }
 
 }

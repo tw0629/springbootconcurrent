@@ -1,9 +1,4 @@
-package com.tian.AQS_CAS;
-
-import org.apache.catalina.Container;
-import org.apache.catalina.connector.RequestFacade;
-import org.apache.catalina.startup.Tomcat;
-import org.apache.http.protocol.HttpProcessor;
+package com.tian.concurrent.AQS_CAS;
 
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.AbstractQueuedSynchronizer;

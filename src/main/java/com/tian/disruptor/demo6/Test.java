@@ -4,7 +4,7 @@ package com.tian.disruptor.demo6;
  *
  * https://www.cnblogs.com/0813lichenyu/p/9244410.html
  *
- * ²âÊÔÀà
+ * æµ‹è¯•ç±»
  *
  * @author David Tian
  * @since 2019-05-09
@@ -21,7 +21,7 @@ public class Test {
             producer.disruptorManage();
         }
 
-        System.out.println("======×ÜºÄÊ±======>"+(System.currentTimeMillis()-startTime)+"ms");
+        System.out.println("======æ€»è€—æ—¶======>"+(System.currentTimeMillis()-startTime)+"ms");
         System.out.println("--------------------------------------------------");
     }
 }

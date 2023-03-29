@@ -23,14 +23,14 @@ public class countDownLatchTest {
             @Override
             public void run() {
 
-                //1 Ö®Ç°µÄ
+                //1 ä¹‹å‰çš„
                 //function1();
 
-                //2 ĞŞ¸ÄÖ®ºóµÄ
+                //2 ä¿®æ”¹ä¹‹åçš„
                 try {
                     function1();
                 } catch (Exception e) {
-                    //Òì³£´¦Àí
+                    //å¼‚å¸¸å¤„ç†
                     e.printStackTrace();
                 }
                 finally {
@@ -57,21 +57,21 @@ public class countDownLatchTest {
 
 
         try {
-            //3 Ö®Ç°µÄ
+            //3 ä¹‹å‰çš„
             //cdl.await();
 
-            //4 ĞŞ¸ÄÖ®ºóµÄ  ·ÀÖ¹Ä³¸öÏß³ÌÎŞÏŞÆÚµÄ Ã»ÓĞÖ´ĞĞÍ£Ö¹
+            //4 ä¿®æ”¹ä¹‹åçš„  é˜²æ­¢æŸä¸ªçº¿ç¨‹æ— é™æœŸçš„ æ²¡æœ‰æ‰§è¡Œåœæ­¢
             cdl.await(8, TimeUnit.SECONDS);
 
 
-            System.out.println("Èı¸öÖ´ĞĞÏß³Ì½áÊø");
+            System.out.println("ä¸‰ä¸ªæ‰§è¡Œçº¿ç¨‹ç»“æŸ");
         } catch (InterruptedException e) {
             e.printStackTrace();
-            System.out.println("Ö´ĞĞÏß³ÌÒì³£");
+            System.out.println("æ‰§è¡Œçº¿ç¨‹å¼‚å¸¸");
         }
         finally {
             executorService.shutdown();
-            System.out.println("Ö´ĞĞÏß³Ì¹Ø±Õ");
+            System.out.println("æ‰§è¡Œçº¿ç¨‹å…³é—­");
         }
 
 
@@ -79,15 +79,15 @@ public class countDownLatchTest {
 
     private static void function1(){
         int i = 10/0;
-        System.out.println("·½·¨Ò»Íê³É");
+        System.out.println("æ–¹æ³•ä¸€å®Œæˆ");
     }
 
     private static void function2(){
-        System.out.println("·½·¨¶şÍê³É");
+        System.out.println("æ–¹æ³•äºŒå®Œæˆ");
     }
 
     private static void function3(){
-        System.out.println("·½·¨ÈıÍê³É");
+        System.out.println("æ–¹æ³•ä¸‰å®Œæˆ");
     }
 
 }

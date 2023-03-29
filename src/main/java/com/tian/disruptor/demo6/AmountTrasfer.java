@@ -3,7 +3,7 @@ package com.tian.disruptor.demo6;
 import com.lmax.disruptor.EventTranslator;
 
 /**
- * ÊÂ¼ş´¦ÀíÀà-½»Ò×Á÷Ë®³õÊ¼»¯
+ * äº‹ä»¶å¤„ç†ç±»-äº¤æ˜“æµæ°´åˆå§‹åŒ–
  *
  * @author David Tian
  * @since 2019-05-09
@@ -16,6 +16,6 @@ public class AmountTrasfer implements EventTranslator<TransactionEvent> {
         arg0.setAmount(Math.random()*99);
         arg0.setCallNumber(17088888888L);
         arg0.setSeq(System.currentTimeMillis());
-        System.out.println("ÉèÖÃ½»Ò×Á÷Ë®:"+arg0.getSeq());
+        System.out.println("è®¾ç½®äº¤æ˜“æµæ°´:"+arg0.getSeq());
     }
 }

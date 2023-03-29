@@ -30,7 +30,7 @@ public class Profiler {
     public static void main(String[] args) throws InterruptedException {
         Profiler.begin();
         Thread.sleep(1000L);
-        System.out.println("消耗时间："+Profiler.end()+"mills毫秒");
+        System.out.println("娑堣�楁椂闂达細"+Profiler.end()+"mills姣");
 
     }
 

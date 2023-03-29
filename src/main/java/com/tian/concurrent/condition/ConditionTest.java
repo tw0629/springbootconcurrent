@@ -1,12 +1,11 @@
-package com.tian.condition;
+package com.tian.concurrent.condition;
 
-import com.sun.javafx.collections.MappingChange;
-import org.w3c.dom.stylesheets.LinkStyle;
+import lombok.Synchronized;
 
-import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.locks.*;
+
 
 /**
  * @author David Tian
@@ -92,6 +91,7 @@ public class ConditionTest {
         final Basket basket = new Basket();
         //  定义一个producer
         Runnable producer = new Runnable() {
+            @Override
             public void run() {
                 try {
                     basket.produce();
@@ -103,6 +103,7 @@ public class ConditionTest {
 
         // 定义一个consumer
         Runnable consumer = new Runnable() {
+            @Override
             public void run() {
                 try {
                     basket.consume();
@@ -137,6 +138,9 @@ public class ConditionTest {
         r.lock();
         r.tryLock();
         r.unlock();
+
+        //AbstractQueuedSynchronizer
+        //Synchronized
 //
         ReentrantReadWriteLock rw = new ReentrantReadWriteLock();
         ReentrantReadWriteLock.WriteLock writeLock = rw.writeLock();
@@ -154,7 +158,7 @@ public class ConditionTest {
         //System.out.println("nextSeason->"+Season.getNextSeason(Season.SPRING));
 
 
-        System.out.println("nowSeason->"+Season2.SPRING+", value->"+Season2.SPRING.ordinal());
+        //System.out.println("nowSeason->"+Season2.SPRING+", value->"+Season2.SPRING.ordinal());
         //System.out.println("nextSeason->"+Season2.getNextSeason());
 
         ReentrantLock r2 = new ReentrantLock();

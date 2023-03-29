@@ -3,7 +3,7 @@ package com.tian.disruptor.demo6;
 import com.lmax.disruptor.EventHandler;
 
 /**
- * ·¢ËÍÑéÖ¤¶ÌĞÅ
+ * å‘é€éªŒè¯çŸ­ä¿¡
  *
  * @author David Tian
  * @since 2019-05-09
@@ -14,7 +14,7 @@ public class SendMsgHandler implements EventHandler<TransactionEvent> {
     @Override
     public void onEvent(TransactionEvent arg0, long arg1, boolean arg2) throws Exception {
         // TODO Auto-generated method stub
-        System.out.println("ÏòÊÖ»úºÅ:"+arg0.getCallNumber()+"·¢ËÍÑéÖ¤¶ÌĞÅ......");
+        System.out.println("å‘æ‰‹æœºå·:"+arg0.getCallNumber()+"å‘é€éªŒè¯çŸ­ä¿¡......");
 
     }
 }

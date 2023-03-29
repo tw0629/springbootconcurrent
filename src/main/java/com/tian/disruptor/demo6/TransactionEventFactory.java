@@ -3,10 +3,10 @@ package com.tian.disruptor.demo6;
 import com.lmax.disruptor.EventFactory;
 
 /**
- * Event Factory ¶¨ÒåÁËÈçºÎÊµÀı»¯Ç°ÃæµÚ1²½ÖĞ¶¨ÒåµÄÊÂ¼ş(Event)
- * Disruptor Í¨¹ı EventFactory ÔÚ RingBuffer ÖĞÔ¤´´½¨ Event µÄÊµÀı¡£
- * Ò»¸ö Event ÊµÀıÊµ¼ÊÉÏ±»ÓÃ×÷Ò»¸ö¡°Êı¾İ²Û¡±£¬·¢²¼Õß·¢²¼Ç°£¬ÏÈ´Ó RingBuffer »ñµÃÒ»¸ö Event µÄÊµÀı£¬
- * È»ºóÍù Event ÊµÀıÖĞÌî³äÊı¾İ£¬Ö®ºóÔÙ·¢²¼µ½ RingBufferÖĞ£¬Ö®ºóÓÉ Consumer »ñµÃ¸Ã Event ÊµÀı²¢´ÓÖĞ¶ÁÈ¡Êı¾İ¡£
+ * Event Factory å®šä¹‰äº†å¦‚ä½•å®ä¾‹åŒ–å‰é¢ç¬¬1æ­¥ä¸­å®šä¹‰çš„äº‹ä»¶(Event)
+ * Disruptor é€šè¿‡ EventFactory åœ¨ RingBuffer ä¸­é¢„åˆ›å»º Event çš„å®ä¾‹ã€‚
+ * ä¸€ä¸ª Event å®ä¾‹å®é™…ä¸Šè¢«ç”¨ä½œä¸€ä¸ªâ€œæ•°æ®æ§½â€ï¼Œå‘å¸ƒè€…å‘å¸ƒå‰ï¼Œå…ˆä» RingBuffer è·å¾—ä¸€ä¸ª Event çš„å®ä¾‹ï¼Œ
+ * ç„¶åå¾€ Event å®ä¾‹ä¸­å¡«å……æ•°æ®ï¼Œä¹‹åå†å‘å¸ƒåˆ° RingBufferä¸­ï¼Œä¹‹åç”± Consumer è·å¾—è¯¥ Event å®ä¾‹å¹¶ä»ä¸­è¯»å–æ•°æ®ã€‚
  *
  * @author David Tian
  * @since 2019-05-09

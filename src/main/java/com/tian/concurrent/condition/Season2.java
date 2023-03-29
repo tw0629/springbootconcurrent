@@ -1,4 +1,4 @@
-package com.tian.condition;
+package com.tian.concurrent.condition;
 
 /**
  * @author David Tian
@@ -30,4 +30,7 @@ public enum Season2 {
     };
 
     public abstract Season2 getNextSeason();
+
+    Season2() {
+    }
 }

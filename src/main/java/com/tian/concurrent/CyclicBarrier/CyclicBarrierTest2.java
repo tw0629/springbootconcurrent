@@ -3,7 +3,7 @@ package com.tian.concurrent.CyclicBarrier;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 
-/** ²¢·¢¹¤¾ß CyclicBarrier
+/** å¹¶å‘å·¥å…· CyclicBarrier
  *
  * @author David Tian
  * @since 2019-04-24
@@ -11,10 +11,10 @@ import java.util.concurrent.CyclicBarrier;
 public class CyclicBarrierTest2 {
 
     /**
-     * 2 Èç¹ûËµÏëÔÚËùÓĞÏß³ÌĞ´Èë²Ù×÷ÍêÖ®ºó£¬½øĞĞ¶îÍâµÄÆäËû²Ù×÷¿ÉÒÔÎªCyclicBarrierÌá¹©Runnable²ÎÊı
+     * 2 å¦‚æœè¯´æƒ³åœ¨æ‰€æœ‰çº¿ç¨‹å†™å…¥æ“ä½œå®Œä¹‹åï¼Œè¿›è¡Œé¢å¤–çš„å…¶ä»–æ“ä½œå¯ä»¥ä¸ºCyclicBarrieræä¾›Runnableå‚æ•°
      *
      *
-     * ´Ó½á¹û¿ÉÒÔ¿´³ö£¬µ±ËÄ¸öÏß³Ì¶¼µ½´ïbarrier×´Ì¬ºó£¬»á´ÓËÄ¸öÏß³ÌÖĞÑ¡ÔñÒ»¸öÏß³ÌÈ¥Ö´ĞĞRunnable¡£
+     * ä»ç»“æœå¯ä»¥çœ‹å‡ºï¼Œå½“å››ä¸ªçº¿ç¨‹éƒ½åˆ°è¾¾barrierçŠ¶æ€åï¼Œä¼šä»å››ä¸ªçº¿ç¨‹ä¸­é€‰æ‹©ä¸€ä¸ªçº¿ç¨‹å»æ‰§è¡ŒRunnableã€‚
      *
      *
      * @param args
@@ -22,10 +22,10 @@ public class CyclicBarrierTest2 {
     public static void main(String[] args) {
         int N = 4;
         CyclicBarrier barrier  = new CyclicBarrier(N,new Runnable() {
-            //£¿£¿ÎªÊ²Ã´Ö»ÓĞÒ»¸öÏß³ÌÖ´ĞĞ
+            //ï¼Ÿï¼Ÿä¸ºä»€ä¹ˆåªæœ‰ä¸€ä¸ªçº¿ç¨‹æ‰§è¡Œ
             @Override
             public void run() {
-                System.out.println("µ±Ç°Ïß³Ì"+Thread.currentThread().getName());
+                System.out.println("å½“å‰çº¿ç¨‹"+Thread.currentThread().getName());
             }
         });
 
@@ -41,34 +41,34 @@ public class CyclicBarrierTest2 {
 
         @Override
         public void run() {
-            System.out.println("Ïß³Ì"+Thread.currentThread().getName()+"ÕıÔÚĞ´ÈëÊı¾İ...");
+            System.out.println("çº¿ç¨‹"+Thread.currentThread().getName()+"æ­£åœ¨å†™å…¥æ•°æ®...");
             try {
-                Thread.sleep(5000);      //ÒÔË¯ÃßÀ´Ä£ÄâĞ´ÈëÊı¾İ²Ù×÷
-                System.out.println("Ïß³Ì"+Thread.currentThread().getName()+"Ğ´ÈëÊı¾İÍê±Ï£¬µÈ´ıÆäËûÏß³ÌĞ´ÈëÍê±Ï");
+                Thread.sleep(5000);      //ä»¥ç¡çœ æ¥æ¨¡æ‹Ÿå†™å…¥æ•°æ®æ“ä½œ
+                System.out.println("çº¿ç¨‹"+Thread.currentThread().getName()+"å†™å…¥æ•°æ®å®Œæ¯•ï¼Œç­‰å¾…å…¶ä»–çº¿ç¨‹å†™å…¥å®Œæ¯•");
                 cyclicBarrier.await();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }catch(BrokenBarrierException e){
                 e.printStackTrace();
             }
-            System.out.println("ËùÓĞÏß³ÌĞ´ÈëÍê±Ï£¬¼ÌĞø´¦ÀíÆäËûÈÎÎñ...");
+            System.out.println("æ‰€æœ‰çº¿ç¨‹å†™å…¥å®Œæ¯•ï¼Œç»§ç»­å¤„ç†å…¶ä»–ä»»åŠ¡...");
         }
     }
 
-    /**´òÓ¡½á¹û£º
+    /**æ‰“å°ç»“æœï¼š
      *
-     * Ïß³ÌThread-0ÕıÔÚĞ´ÈëÊı¾İ...
-     * Ïß³ÌThread-1ÕıÔÚĞ´ÈëÊı¾İ...
-     * Ïß³ÌThread-2ÕıÔÚĞ´ÈëÊı¾İ...
-     * Ïß³ÌThread-3ÕıÔÚĞ´ÈëÊı¾İ...
-     * Ïß³ÌThread-1Ğ´ÈëÊı¾İÍê±Ï£¬µÈ´ıÆäËûÏß³ÌĞ´ÈëÍê±Ï
-     * Ïß³ÌThread-3Ğ´ÈëÊı¾İÍê±Ï£¬µÈ´ıÆäËûÏß³ÌĞ´ÈëÍê±Ï
-     * Ïß³ÌThread-2Ğ´ÈëÊı¾İÍê±Ï£¬µÈ´ıÆäËûÏß³ÌĞ´ÈëÍê±Ï
-     * Ïß³ÌThread-0Ğ´ÈëÊı¾İÍê±Ï£¬µÈ´ıÆäËûÏß³ÌĞ´ÈëÍê±Ï
-     * µ±Ç°Ïß³ÌThread-0
-     * ËùÓĞÏß³ÌĞ´ÈëÍê±Ï£¬¼ÌĞø´¦ÀíÆäËûÈÎÎñ...
-     * ËùÓĞÏß³ÌĞ´ÈëÍê±Ï£¬¼ÌĞø´¦ÀíÆäËûÈÎÎñ...
-     * ËùÓĞÏß³ÌĞ´ÈëÍê±Ï£¬¼ÌĞø´¦ÀíÆäËûÈÎÎñ...
-     * ËùÓĞÏß³ÌĞ´ÈëÍê±Ï£¬¼ÌĞø´¦ÀíÆäËûÈÎÎñ...
+     * çº¿ç¨‹Thread-0æ­£åœ¨å†™å…¥æ•°æ®...
+     * çº¿ç¨‹Thread-1æ­£åœ¨å†™å…¥æ•°æ®...
+     * çº¿ç¨‹Thread-2æ­£åœ¨å†™å…¥æ•°æ®...
+     * çº¿ç¨‹Thread-3æ­£åœ¨å†™å…¥æ•°æ®...
+     * çº¿ç¨‹Thread-1å†™å…¥æ•°æ®å®Œæ¯•ï¼Œç­‰å¾…å…¶ä»–çº¿ç¨‹å†™å…¥å®Œæ¯•
+     * çº¿ç¨‹Thread-3å†™å…¥æ•°æ®å®Œæ¯•ï¼Œç­‰å¾…å…¶ä»–çº¿ç¨‹å†™å…¥å®Œæ¯•
+     * çº¿ç¨‹Thread-2å†™å…¥æ•°æ®å®Œæ¯•ï¼Œç­‰å¾…å…¶ä»–çº¿ç¨‹å†™å…¥å®Œæ¯•
+     * çº¿ç¨‹Thread-0å†™å…¥æ•°æ®å®Œæ¯•ï¼Œç­‰å¾…å…¶ä»–çº¿ç¨‹å†™å…¥å®Œæ¯•
+     * å½“å‰çº¿ç¨‹Thread-0
+     * æ‰€æœ‰çº¿ç¨‹å†™å…¥å®Œæ¯•ï¼Œç»§ç»­å¤„ç†å…¶ä»–ä»»åŠ¡...
+     * æ‰€æœ‰çº¿ç¨‹å†™å…¥å®Œæ¯•ï¼Œç»§ç»­å¤„ç†å…¶ä»–ä»»åŠ¡...
+     * æ‰€æœ‰çº¿ç¨‹å†™å…¥å®Œæ¯•ï¼Œç»§ç»­å¤„ç†å…¶ä»–ä»»åŠ¡...
+     * æ‰€æœ‰çº¿ç¨‹å†™å…¥å®Œæ¯•ï¼Œç»§ç»­å¤„ç†å…¶ä»–ä»»åŠ¡...
      */
 }

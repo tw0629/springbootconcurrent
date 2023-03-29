@@ -5,7 +5,7 @@ import org.junit.Test;
 import java.util.concurrent.SynchronousQueue;
 
 /**
- *  SynchronousQueueµÄputºÍtakeÊÇ×èÈûµÄ£¬Ò»¸öÏß³Ìput£¬È»ºó×èÈû£¬µÈ´ıÁíÒ»¸öÏß³Ìtake£»»òÕßÒ»¸öÏß³Ìtake£¬È»ºó×èÈû£¬µÈ´ıÁíÒ»¸öÏß³Ìput¡£
+ *  SynchronousQueueçš„putå’Œtakeæ˜¯é˜»å¡çš„ï¼Œä¸€ä¸ªçº¿ç¨‹putï¼Œç„¶åé˜»å¡ï¼Œç­‰å¾…å¦ä¸€ä¸ªçº¿ç¨‹takeï¼›æˆ–è€…ä¸€ä¸ªçº¿ç¨‹takeï¼Œç„¶åé˜»å¡ï¼Œç­‰å¾…å¦ä¸€ä¸ªçº¿ç¨‹putã€‚
  *
  *
  *
@@ -18,7 +18,7 @@ public class SyschronousQueueTest2 {
     public void test(){
 
         final SynchronousQueue<String> q = new SynchronousQueue<String>();
-        //putÏß³Ì
+        //putçº¿ç¨‹
         class Putter implements Runnable {
             String title;
             public Putter(String title) {
@@ -27,7 +27,7 @@ public class SyschronousQueueTest2 {
             @Override
             public void run() {
                 try {
-                    System.out.println("=====Èë¶ÓÔªËØÊÇ=====>"+title);
+                    System.out.println("=====å…¥é˜Ÿå…ƒç´ æ˜¯=====>"+title);
                     q.put(this.title);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -39,7 +39,7 @@ public class SyschronousQueueTest2 {
 
 
 
-        //takeÏß³Ì
+        //takeçº¿ç¨‹
         class Taker implements Runnable {
             @Override
             public void run() {

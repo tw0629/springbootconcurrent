@@ -1,4 +1,4 @@
-package com.tian.Atomic;
+package com.tian.concurrent.Atomic;
 
 import org.junit.Test;
 
@@ -24,6 +24,9 @@ public class AtomicTest {
         atomicInteger.compareAndSet(30, 40);
         System.out.println("======> "+atomicInteger.get());
         atomicInteger.compareAndSet(20, 40);
+        System.out.println("======> "+atomicInteger.get());
+        int addAndGet = atomicInteger.addAndGet(1);
+        System.out.println("======> "+addAndGet);
         System.out.println("======> "+atomicInteger.get());
 
         AtomicBoolean atomicBoolean = new AtomicBoolean(true);

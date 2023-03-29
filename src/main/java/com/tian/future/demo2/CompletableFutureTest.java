@@ -29,8 +29,8 @@ public class CompletableFutureTest {
             public void run() {
                 try {
                     TimeUnit.SECONDS.sleep(4);
-                    System.out.println(getThreadName()+"Ö´ĞĞ.....");
-                    //ÔÚ×ÓÏß³ÌÖĞÍê³ÉÖ÷Ïß³ÌcompletableFutureµÄÍê³É
+                    System.out.println(getThreadName()+"æ‰§è¡Œ.....");
+                    //åœ¨å­çº¿ç¨‹ä¸­å®Œæˆä¸»çº¿ç¨‹completableFutureçš„å®Œæˆ
                     completableFuture.complete("success");
 
                 } catch (InterruptedException e) {
@@ -39,9 +39,9 @@ public class CompletableFutureTest {
             }
         };
         Thread t1=new Thread(runnable);
-        t1.start();//Æô¶¯×ÓÏß³Ì
+        t1.start();//å¯åŠ¨å­çº¿ç¨‹
 
-        String result= null;//Ö÷Ïß³Ì×èÈû£¬µÈ´ıÍê³É
+        String result= null;//ä¸»çº¿ç¨‹é˜»å¡ï¼Œç­‰å¾…å®Œæˆ
         try {
             System.out.println(getThreadName()+"=====XXX===test1===");
             result = completableFuture.get();
@@ -64,7 +64,7 @@ public class CompletableFutureTest {
             @Override
             public void run() {
                 try {
-                    System.out.println(getThreadName()+"ÕıÔÚÖ´ĞĞÒ»¸öÃ»ÓĞ·µ»ØÖµµÄÒì²½ÈÎÎñ¡£");
+                    System.out.println(getThreadName()+"æ­£åœ¨æ‰§è¡Œä¸€ä¸ªæ²¡æœ‰è¿”å›å€¼çš„å¼‚æ­¥ä»»åŠ¡ã€‚");
                     TimeUnit.SECONDS.sleep(2);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -83,7 +83,7 @@ public class CompletableFutureTest {
             e.printStackTrace();
         }
 
-        System.out.println(getThreadName()+" ½áÊø¡£");
+        System.out.println(getThreadName()+" ç»“æŸã€‚");
 
     }
 
@@ -97,7 +97,7 @@ public class CompletableFutureTest {
             public String get() {
 
                 try {
-                    System.out.println(getThreadName()+"ÕıÔÚÖ´ĞĞÒ»¸öÓĞ·µ»ØÖµµÄÒì²½ÈÎÎñ¡£");
+                    System.out.println(getThreadName()+"æ­£åœ¨æ‰§è¡Œä¸€ä¸ªæœ‰è¿”å›å€¼çš„å¼‚æ­¥ä»»åŠ¡ã€‚");
                     TimeUnit.SECONDS.sleep(4);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -119,7 +119,7 @@ public class CompletableFutureTest {
             e.printStackTrace();
         }
 
-        System.out.println(getThreadName()+"  ½á¹û£º"+result);
+        System.out.println(getThreadName()+"  ç»“æœï¼š"+result);
     }
 
 
@@ -174,7 +174,7 @@ public class CompletableFutureTest {
     }
     /**
      *
-     * ´òÓ¡£º
+     * æ‰“å°ï¼š
      * ======XXXYYY======
      * ======XXXYYY2======
      * ======XXXYYY3======

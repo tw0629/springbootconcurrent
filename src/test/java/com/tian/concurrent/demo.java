@@ -9,6 +9,7 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author David Tian
@@ -103,6 +104,8 @@ public class demo {
         linkedHashMap.entrySet();
         linkedHashMap.entrySet().iterator();
 
+        int[] a = new int[10];
+
 
 
         System.out.println("        "+ diao());
@@ -128,5 +131,10 @@ public class demo {
         }
     }
 
+    @Test
+    public void test5(){
+
+
+    }
 
 }
